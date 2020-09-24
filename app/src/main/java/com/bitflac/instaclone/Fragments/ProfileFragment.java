@@ -146,6 +146,7 @@ public class ProfileFragment extends Fragment {
         myPics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                savedPics.setImageResource(R.drawable.ic_save);
                 recyclerView_post.setVisibility(View.VISIBLE);
                 recyclerView_saved.setVisibility(View.GONE);
             }
