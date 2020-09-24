@@ -154,6 +154,7 @@ public class ProfileFragment extends Fragment {
         savedPics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                savedPics.setImageResource(R.drawable.ic_save_black);
                 recyclerView_post.setVisibility(View.GONE);
                 recyclerView_saved.setVisibility(View.VISIBLE);
 
