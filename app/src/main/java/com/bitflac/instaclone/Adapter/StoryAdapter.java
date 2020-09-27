@@ -152,7 +152,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.Holder> {
                 if (click) {
                     if (count > 0) {
                         AlertDialog alertDialog = new AlertDialog.Builder(mContext).create();
-                        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "View Story", new DialogInterface.OnClickListener() {
+                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "View Story", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Intent intent = new Intent(mContext, StoryActivity.class);

@@ -10,27 +10,28 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.MenuItem;
+
 import com.bitflac.instaclone.Fragments.HomeFragment;
 import com.bitflac.instaclone.Fragments.NotificationFragment;
 import com.bitflac.instaclone.Fragments.ProfileFragment;
 import com.bitflac.instaclone.Fragments.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
+
+
 
 public class HomeActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private Fragment selectorfragment;
-    private FirebaseAuth mauth;
     private ConnectivityManager connectivityManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        if (!isConnected()){
-            final AlertDialog alertDialog=new AlertDialog.Builder(this).create();
+        if (!isConnected()) {
+            final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setMessage("Check your Internet");
-            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL,"OK", new DialogInterface.OnClickListener() {
+            alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     alertDialog.dismiss();
@@ -84,10 +85,11 @@ public class HomeActivity extends AppCompatActivity {
         }
 
     }
-    private boolean isConnected(){
-        connectivityManager= (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+
+    private boolean isConnected() {
+        connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         if (connectivityManager != null) {
-            return connectivityManager.getActiveNetworkInfo()!=null&&connectivityManager.getActiveNetworkInfo().isConnected();
+            return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
         }
         return false;
     }

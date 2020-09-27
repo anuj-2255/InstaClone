@@ -1,8 +1,5 @@
 package com.bitflac.instaclone.Fragments;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -87,7 +84,7 @@ public class HomeFragment extends Fragment {
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     followingList.add(snapshot1.getKey());
                 }
-                followingList.add(fUser.getUid());
+
 
                 readPosts();
                 readStory();
@@ -101,7 +98,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void readPosts() {
-
+        followingList.add(fUser.getUid());
         FirebaseDatabase.getInstance().getReference().child("Posts").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -119,6 +116,7 @@ public class HomeFragment extends Fragment {
                 progressBar.setVisibility(View.GONE);
                 recyclerViewPosts.setVisibility(View.VISIBLE);
                 postAdapter.notifyDataSetChanged();
+                followingList.remove(fUser.getUid());
             }
 
             @Override
@@ -129,7 +127,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void readStory() {
-        followingList.remove(fUser.getUid());
+
         FirebaseDatabase.getInstance().getReference().child("Story").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
